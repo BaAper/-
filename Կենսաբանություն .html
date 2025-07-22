@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title>Մարդու օրգանների ուսուցում</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e9f2f9;
+      color: #333;
+    }
+
+    header {
+      background: #3a7bd5;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      justify-content: space-around;
+    }
+
+    .image-panel {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .image-panel img {
+      max-width: 100%;
+      height: auto;
+      border: 4px solid #3a7bd5;
+      border-radius: 12px;
+    }
+
+    .download-link {
+      margin-top: 10px;
+      display: block;
+      font-weight: bold;
+      color: #3a7bd5;
+      text-decoration: none;
+    }
+
+    .download-link:hover {
+      text-decoration: underline;
+    }
+
+    .info-panel {
+      flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .info-panel h2 {
+      margin-top: 0;
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .buttons button {
+      margin: 5px;
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #3a7bd5;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background: #2e62aa;
+    }
+
+    .organ-image-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Մարդու օրգանների ուսուցում</h1>
+</header>
+
+<div class="buttons">
+  <button onclick="updateOrganInfo('սիրտ')">Սիրտ</button>
+  <button onclick="updateOrganInfo('թոքեր')">Թոքեր</button>
+  <button onclick="updateOrganInfo('ուղեղ')">Ուղեղ</button>
+  <button onclick="updateOrganInfo('լյարդ')">Լյարդ</button>
+  <button onclick="updateOrganInfo('ստամոքս')">Ստամոքս</button>
+  <button onclick="updateOrganInfo('երիկամներ')">Երիկամներ</button>
+</div>
+
+<div class="container">
+  <div class="image-panel">
+    <!-- Մարդու թափանցիկ նկար -->
+    <img src="https://i.imgur.com/wdx0KeT.jpg" alt="Human Body">
+    <a href="https://media.geeksforgeeks.org/wp-content/uploads/20220705141830/Diagram-of-Human-Organs.png" target="_blank" download class="download-link">
+      
+    </a>
+  </div>
+
+  <div class="info-panel">
+    <div class="organ-image-container">
+      <img id="organImage" src="" alt="Organ Image">
+    </div>
+    <h2 id="organName">Ընտրեք օրգան</h2>
+    <p id="organInfo">Տեղեկություն օրգանի մասին կերևա այստեղ:</p>
+    <ul id="organFacts"></ul>
+  </div>
+</div>
+
+<script>
+function updateOrganInfo(organ) {
+  const info = {
+    "սիրտ": {
+      name: "Սիրտ🫀",
+      description: "Սիրտը պոմպի նման արյուն է մղում ամբողջ մարմնով:",
+      facts: [
+        "Միջինը բաբախում է 70 անգամ մեկ րոպեում",
+        "Բաշխում է թթվածին և սնունդ ամբողջ մարմնով"
+      ],
+      image: "https://imgur.com/Wi7XPyN.jpg"
+    },
+    "թոքեր": {
+      name: "Թոքեր 🫁",
+      description: "Թոքերը ներշնչում են թթվածին և արտաշնչում ածխաթթու գազը:",
+      facts: [
+        "Ձախ թոքը փոքր է սրտի պատճառով",
+        "Մարդը միջինը շնչում է մոտ 22,000 անգամ օրական"
+      ],
+      image: "https://imgur.com/4EYZeev.jpg"
+    },
+    "ուղեղ": {
+      name: "Ուղեղ 🧠",
+      description: "Ուղեղը կենտրոնական նյարդային համակարգի ղեկավարն է:",
+      facts: [
+        "Ունի շուրջ 86 միլիարդ նյարդաբջիջ",
+        "Պատասխանատու է մտածման, հիշողության ու շարժման համար"
+      ],
+      image: "https://imgur.com/SKIDYtX.jpg"
+    },
+    "լյարդ": {
+      name: "Լյարդ 🟤",
+      description: "Լյարդը մաքրում է արյունը և արտադրում է լեղի:",
+      facts: [
+        "Մարմնի ամենամեծ ներքին օրգանն է",
+        "Օգնում է սննդի մշակմանը"
+      ],
+      image: "https://imgur.com/W56KjBQ.jpg"
+    },
+    "ստամոքս": {
+      name: "Ստամոքս 🍽️",
+      description: "Ստամոքսը մարսում է սնունդը՝ թթվով և ֆերմենտներով:",
+      facts: [
+        "Արտադրում է աղաթթու",
+        "Սնունդը մնում է այնտեղ մոտ 2-4 ժամ"
+      ],
+      image: "https://imgur.com/wRJc6dd.jpg"
+    },
+    "երիկամներ": {
+      name: "Երիկամներ 🫘",
+      description: "Երիկամները մաքրում են արյունը և արտադրում մեզը:",
+      facts: [
+        "Աշխատում են զույգերով",
+        "Խթանում են ջրի ու աղերի հավասարակշռությունը"
+      ],
+      image: "https://imgur.com/tl26Fo9.jpg"
+    }
+  };
+
+  const data = info[organ];
+
+  document.getElementById("organName").textContent = data.name;
+  document.getElementById("organInfo").textContent = data.description;
+
+  const list = document.getElementById("organFacts");
+  list.innerHTML = "";
+  data.facts.forEach(f => {
+    const li = document.createElement("li");
+    li.textContent = f;
+    list.appendChild(li);
+  });
+
+  const img = document.getElementById("organImage");
+  img.src = data.image;
+  img.style.display = "block";
+}
+</script>
+
+</body>
+</html>
